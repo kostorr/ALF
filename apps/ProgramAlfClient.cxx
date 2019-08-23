@@ -75,6 +75,7 @@ class ProgramAlfClient : public AliceO2::Common::Program
 
     if (mOptions.dimDnsNode != "") {
       getLogger() << "DIM_DNS_NODE env variable not set. Setting it from argument." << endm;
+      setenv("DIM_DNS_NODE", mOptions.dimDnsNode.c_str(), 1); // Don't be afraid to overwrite since we ended up here
       getLogger() << "DIM_DNS_NODE=" << mOptions.dimDnsNode << endm;
     } else if (const char* dimDnsNode = std::getenv("DIM_DNS_NODE")) {
       getLogger() << "Picked up DIM_DMS_NODE from the environment." << endm;
